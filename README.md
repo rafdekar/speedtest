@@ -10,6 +10,14 @@ Run this command to install the package
 
     go get github.com/rafdekar/speedtest
 
+### Example use
+    
+    speed, err := speedtest.MeasureSpeed(speedtest.Netflix)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(speed)
+
 ### Documentation
 
 There is an [online reference for the package][godoc].
