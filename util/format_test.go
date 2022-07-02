@@ -10,5 +10,5 @@ func TestFormatMeasures(t *testing.T) {
 
 	formattedSpeeds := FormatMeasures(dl, ul)
 
-	require.Equal(t, "Download speed: 200  Upload speed: 100", formattedSpeeds)
+	require.Equal(t, "Download speed: 200.00  Upload speed: 100.00", formattedSpeeds)
 }
