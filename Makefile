@@ -4,4 +4,7 @@ mockprovider:
 test:
 	go test -v -cover ./...
 
-.PHONY: mockprovider test
+benchmark:
+	go test -bench=. -count=5
+
+.PHONY: mockprovider test benchmark
