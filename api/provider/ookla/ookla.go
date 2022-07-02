@@ -14,13 +14,13 @@ type OOkla struct {
 // Init method is downloading user info, fetching the closest servers and doing download, and upload tests to the selected servers
 func (o *OOkla) Init() error {
 	var err error
-	ookla := &OOkla{}
-	ookla.userData, err = speedtest.FetchUserInfo()
+
+	o.userData, err = speedtest.FetchUserInfo()
 	if err != nil {
 		return util.ErrCouldNotFetchUserInfo
 	}
 
-	servers, err := speedtest.FetchServers(ookla.userData)
+	servers, err := speedtest.FetchServers(o.userData)
 	if err != nil {
 		return util.ErrCouldNotFetchServers
 	}
@@ -28,14 +28,14 @@ func (o *OOkla) Init() error {
 		return util.ErrServersNotFound
 	}
 
-	ookla.server = findClosestServer(servers)
+	o.server = findClosestServer(servers)
 
-	err = ookla.server.DownloadTest(true)
+	err = o.server.DownloadTest(true)
 	if err != nil {
 		return util.ErrDownloadTestFailure
 	}
 
-	err = ookla.server.UploadTest(false)
+	err = o.server.UploadTest(false)
 	if err != nil {
 		return util.ErrUploadTestFailure
 	}
